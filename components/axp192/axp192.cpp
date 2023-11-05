@@ -227,8 +227,8 @@ void AXP192Component::UpdatePowerLED()
             Write1Byte( 0x99 , 0x00 );
             Write1Byte( 0x9A , 0x00 );
         }else{
-            Write1Byte( 0x99 , 0x16 );
-            Write1Byte( 0x9A , 0x0B );
+            Write1Byte( 0x99 , 0xFF );
+            Write1Byte( 0x9A , 0xFF );
         }
         break;
       }
