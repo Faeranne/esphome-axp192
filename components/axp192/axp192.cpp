@@ -38,6 +38,10 @@ void AXP192Component::setup()
   }
 }
 
+void AXP192Component::set_power_led(bool state){
+    
+}
+
 void AXP192Component::dump_config() {
   ESP_LOGCONFIG(TAG, "AXP192:");
   LOG_I2C_DEVICE(this);
@@ -132,6 +136,9 @@ void AXP192Component::begin(bool disableLDO2, bool disableLDO3, bool disableRTC,
 
     // Enable bat detection
     Write1Byte(0x32, 0x46);
+
+    // Set GPIO1 to PWM
+    Write1Byte(0x84, 0x02);
 
 }
 
