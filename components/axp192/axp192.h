@@ -67,6 +67,7 @@ protected:
 
     void  begin(bool disableLDO2 = false, bool disableLDO3 = false, bool disableRTC = false, bool disableDCDC1 = false, bool disableDCDC3 = false);
     void  UpdateBrightness();
+    void  UpdatePowerLED();
     bool  GetBatState();
     uint8_t  GetBatData();
 
