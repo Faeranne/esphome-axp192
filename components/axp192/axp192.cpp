@@ -135,7 +135,7 @@ void AXP192Component::begin(bool disableLDO2, bool disableLDO3, bool disableRTC,
     Write1Byte(0x32, 0x46);
 
     // Set GPIO1 to PWM
-    Write1Byte(0x84, 0x02);
+    Write1Byte(0x92, 0x02);
 
 }
 
