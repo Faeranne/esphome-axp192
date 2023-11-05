@@ -38,10 +38,6 @@ void AXP192Component::setup()
   }
 }
 
-void AXP192Component::set_power_led(bool state){
-    
-}
-
 void AXP192Component::dump_config() {
   ESP_LOGCONFIG(TAG, "AXP192:");
   LOG_I2C_DEVICE(this);
@@ -66,6 +62,7 @@ void AXP192Component::update() {
     }
 
     UpdateBrightness();
+    UpdatePowerLED();
 }
 
 
@@ -214,6 +211,28 @@ uint32_t AXP192Component::Read32bit( uint8_t Addr )
 void AXP192Component::ReadBuff( uint8_t Addr , uint8_t Size , uint8_t *Buff )
 {
     this->read_bytes(Addr, Buff, Size);
+}
+
+void AXP192Component::UpdatePowerLED()
+{
+    if (power_led_ == curr_power_led_)
+    {
+        return;
+    }
+    curr_power_led_ = power_led_;
+    switch (this->model_) {
+      case AXP192_M5CORE2:
+      {
+        if(curr_power_led_) {
+            Write1Byte( 0x99 , 0x00 );
+            Write1Byte( 0x9A , 0x00 );
+        }else{
+            Write1Byte( 0x99 , 0x16 );
+            Write1Byte( 0x9A , 0x0B );
+        }
+        break;
+      }
+    }
 }
 
 void AXP192Component::UpdateBrightness()

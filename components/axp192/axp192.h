@@ -32,6 +32,7 @@ class AXP192Component : public PollingComponent, public i2c::I2CDevice {
 public:
   void set_batterylevel_sensor(sensor::Sensor *batterylevel_sensor) { batterylevel_sensor_ = batterylevel_sensor; }
   void set_brightness(float brightness) { brightness_ = brightness; }
+  void set_power_led(bool state) { power_led_ = state; }
   void set_model(AXP192Model model) { this->model_ = model; }
   void set_power_led(bool state);
 
@@ -49,6 +50,8 @@ protected:
     sensor::Sensor *batterylevel_sensor_;
     float brightness_{1.0f};
     float curr_brightness_{-1.0f};
+    bool power_led_;
+    bool curr_power_led_;
     AXP192Model model_;
 
     /** M5 Stick Values
