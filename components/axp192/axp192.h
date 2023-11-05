@@ -35,6 +35,7 @@ public:
   void set_power_led(bool state) { power_led_ = state; }
   void set_model(AXP192Model model) { this->model_ = model; }
   bool get_power_button(void) { return GetBtnPress() == 0x02; }
+  void power_off(void) { PowerOff(); }
 
   // ========== INTERNAL METHODS ==========
   // (In most use cases you won't need these)
