@@ -34,7 +34,6 @@ public:
   void set_brightness(float brightness) { brightness_ = brightness; }
   void set_power_led(bool state) { power_led_ = state; }
   void set_model(AXP192Model model) { this->model_ = model; }
-  void set_power_led(bool state);
 
   // ========== INTERNAL METHODS ==========
   // (In most use cases you won't need these)
